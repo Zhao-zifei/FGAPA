@@ -232,7 +232,29 @@ and $N$ is the total number of samples.
 
 
 
+## **Ablation experiment**
 
+**The fluctuations in training and testing time are related to other tasks running on the computer, but they do not affect the rest of the data.**
+
+![image-20251218161210612](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218161210612.png)
+
+**Module Ablation**
+
+![image-20251218162426817](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218162426817.png)
+
+![image-20251218162456197](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218162456197.png)
+
+![image-20251218162512390](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218162512390.png)
+
+
+
+**Loss Ablation**
+
+![image-20251218163842211](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218163842211.png)
+
+![image-20251218163859228](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218163859228.png)
+
+![image-20251218163917356](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251218163917356.png)
 
 ## **About the paper images**
 
