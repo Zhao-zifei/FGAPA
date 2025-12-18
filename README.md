@@ -1,0 +1,1 @@
+This is supplementary material for the FGAPA paper. It aims to help readers who are not familiar with hyperspectral image processing quickly understand the basic concepts and downstream task settings. At the same time, it provides a comprehensive presentation of all experiments not fully shown in the paper to demonstrate the effectiveness and stability of FGAPA.
