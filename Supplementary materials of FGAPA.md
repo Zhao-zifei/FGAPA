@@ -12,8 +12,7 @@
 
 <center><p>Table 1:Classification Results (Mean ± Std) with Hanchuan dataset as Source Domain</p></center>
 
-<small>
-<table>
+<table style="font-size: 0.875em;">
     <tr>
         <th rowspan="2">Method</th>
         <th colspan="3" class="dataset-header"><center>Indian Pines</center></th>
@@ -80,7 +79,6 @@
         <td><strong>97.45±1.05</strong></td>
     </tr>
 </table>
-</small>
 
 **从Table 1中可以看到，FGAPA在Hanchuan作为源域的情况下，在三个数据集取得的OA、AA、Kappa远优于所有对比方法。以OA为例，与同为域适应方法的DCFSL和MLPA相比，FGAPA的OA在Indian_pines数据集上分别以6.84%，8.5%的优势领先，在Salinas和Botswana上显示出同样趋势。与以泛化性著称的对比学习方法CTF-SSCL相比，我们的方法集成的ACA模块通过对抗的域对齐策略展现出强大性能，同时从方差也可看出我们的方法具有更好的稳定性。综上所述，FGAPA在不同源域下（Chikusei、Hanchuan）均具有很好的稳健性与鲁棒性。**
 
@@ -92,7 +90,9 @@
 
 **FSL 本质上是一种元学习方法，可以从不同的任务中获取可转移的知识，以快速适应新任务。 通常，它在 N-way K-shot 设置下运行，每类使用 K 个标记样本来训练 N 类分类器 。如图1所示，FSL任务由带标签的样本组成的集合Support set与查询样本组成的集合Query set组成。查询集与支持集构建FSL任务并一同输入特征提取器中进行特征提取。Support features代表支持集经由特征提取器提取得到的特征表示，Query features则是查询集经提取得到的特征表示。FSL通过计算由查询特征到每个类的支持特征之间的距离来判定其类别。通过这样的FSL任务，让模型学会学习，通过给定的支持集判定查询集样本的类别。在HSIC中，也是同样道理。通过选取少量标记的高光谱样本作为支持集，大量无标记的样本作为查询集来进行FSL任务。**
 
-<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251220151727215.png" alt="替代文本" title="图片标题">
+
+
+<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/FSL_compressed.png" alt="替代文本" title="图片标题">
 
 <center><p>Fig1：Few Shot Learning</p></center>
 
@@ -100,7 +100,7 @@
 
 2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
-![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/image-20251216203011245.png)
+![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/overall%20framework%20of%20FGAPA_compressed.png)
 
 <center><p>Fig2: Overall Framework of FGAPA</p></center>
 
@@ -182,16 +182,16 @@ $$
 
 8.In the experimental protocol, you have to detail the metrics more in detail. What do they measure? How are they calculated? Why are they relevant for the task?
 
-**我们在文中使用了常用于分类评价三个衡量指标，Overall Accuracy(OA)、AA、Kappa。其中，OA用来反映整体分类正确率，AA关注各类别精度的平均表现以避免被样本数占比多的类别主导，Kappa则校正了随机一致性的影响，更可靠地评估分类结果与真实标签的一致程度。它们的定义如下：**
+**我们在文中使用了常用于分类评价三个衡量指标，Overall Accuracy(OA)、Average Accuracy(AA)、Kappa Coefficient(Kappa)。其中，OA用来反映整体分类正确率，AA关注各类别精度的平均表现以避免被样本数占比多的类别主导，Kappa则校正了随机一致性的影响，更可靠地评估分类结果与真实标签的一致程度。它们的定义如下：**
 
-- **Overall Accuracy(OA): **
+- **OA:** 
 
 $$
 OA = \frac{\sum_{i=1}^{c} TP_i}{N}
 $$
 ​        其中，$TP_i$代表第i类被正确分类的数目，N为所有样本总数，c代表类别总数。
 
-- **Average Accuracy(AA):** 
+- **AA:** 
 
 $$
 AA = \frac{1}{c} \sum_{i=1}^{c} \frac{TP_i}{N_i}
@@ -199,7 +199,7 @@ $$
 
 ​         其中，$TP_i$代表第i类被正确分类的数目，$N_i$表示第i类样本的总数，c代表类别总数。
 
--   **Kappa Coefficient(Kappa): **
+-   **Kappa: **
 
 $$
 \kappa = \frac{P_o - P_e}{1 - P_e}
@@ -248,7 +248,7 @@ $$
 
 我们会在后续的论文中订正将FFA误写成FFE的问题，以提升论文的质量与可读性。另外，我们对图3进行了放大展示以使读者更直观地观察到各方法间的性能差异。
 
-<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/perfomence.png" alt="替代文本" title="图片标题" width=1200>
+<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed.png" alt="替代文本" title="图片标题" width=1200>
 
 <center><p>Figure 7: Revised version of Figure 3 in FGAPA</p></center>
 
