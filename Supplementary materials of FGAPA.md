@@ -155,7 +155,7 @@ $$
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/IP_compressed.png" alt="替代文本" title="图片标题" width=500>
 
-<center><p>Fig4: The land cover types and the number of samples for the Indian_pines dataset</p></center>
+<center><p>Fig4: The land cover types and the number of samples for the Indian Pines dataset</p></center>
 
 
 
@@ -212,7 +212,7 @@ $P_e$ denotes the theoretical probability of agreement between the model and a r
 
 **Due to space constraints, some important content in the main text could not be fully elaborated. To address this, we have supplemented the performance results of FGAPA on the three target domains—Indian Pines, Salinas, and Botswana—with Chikusei as the source domain, including standard deviations to demonstrate statistical significance. Tables 2 to 4 present the performance statistics of FGAPA under 1–5 shot settings on the three target domains, respectively. All experiments were independently run 10 times, and the results are reported as averages.**
 
-<center><p>Table 2: Classification Results (Mean ± Standard Deviation) on Indian_Pines Using 1–5 Labeled Samples per Class</p></center>
+<center><p>Table 2: Classification Results (Mean ± Standard Deviation) on Indian Pines Using 1–5 Labeled Samples per Class</p></center>
 
 <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 14px;">   <thead>     <tr style="background-color: #f2f2f2;">       <th rowspan="2">Indian Pines</th>       <th colspan="8"><center>Method</center></th>     </tr>     <tr style="background-color: #e0e0e0;">       <th>DFSL+NN</th>       <th>DCFSL</th>       <th>HFSL</th>       <th>DM-MRN</th>       <th>FSCF-SSL</th>       <th>CTF-SSCL</th>       <th>MLPA</th>       <th><strong style="color: black;">FGAPA</strong></th>     </tr>   </thead>   <tbody>     <!-- 1-shot -->     <tr>       <th>1-shot</th>       <td>40.93 ± 4.82</td>       <td>41.32 ± 5.75</td>       <td>42.95 ± 6.74</td>       <td>41.65 ± 5.36</td>       <td>46.44 ± 5.10</td>       <td>43.52 ± 4.84</td>       <td>41.83 ± 5.51</td>       <td><strong style="color: black;">52.16 ± 4.48</strong></td>     </tr>      <!-- 2-shot -->     <tr>       <th>2-shot</th>       <td>50.98 ± 3.09</td>       <td>51.60 ± 4.53</td>       <td>53.78 ± 5.59</td>       <td>55.41 ± 3.88</td>       <td>60.14 ± 4.84</td>       <td>56.82 ± 4.92</td>       <td>53.47 ± 4.82</td>       <td><strong style="color: black;">64.81 ± 4.32</strong></td>     </tr>      <!-- 3-shot -->     <tr>       <th>3-shot</th>       <td>56.47 ± 2.44</td>       <td>56.03 ± 3.45</td>       <td>63.65 ± 4.13</td>       <td>60.85 ± 3.28</td>       <td>67.72 ± 1.62</td>       <td>63.61 ± 3.5</td>       <td>57.65 ± 2.63</td>       <td><strong style="color: black;">71.19 ± 4.18</strong></td>     </tr>      <!-- 4-shot -->     <tr>       <th>4-shot</th>       <td>60.44 ± 2.82</td>       <td>61.96 ± 3.98</td>       <td>69.96 ± 3.93</td>       <td>63.95 ± 3.07</td>       <td>72.92 ± 5.56</td>       <td>67.29 ± 3.04</td>       <td>63.31 ± 2.05</td>       <td><strong style="color: black;">76.12 ± 2.76</strong></td>     </tr>      <!-- 5-shot -->     <tr>       <th>5-shot</th>       <td>63.16 ± 2.92</td>       <td>65.74 ± 2.57</td>       <td>74.03 ± 2.71</td>       <td>69.28 ± 3.30</td>       <td>76.96 ± 2.74</td>       <td>70.86 ± 3.22</td>       <td>66.59 ± 2.81</td>       <td><strong style="color: black;">79.65 ± 2.76</strong></td>     </tr>   </tbody> </table>
 
