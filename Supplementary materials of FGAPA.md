@@ -1,18 +1,18 @@
 # Supplementary materials of FGAPA
 
-我们衷心感谢两位审稿人对稿件的细致审阅及其富有建设性的意见。我们非常感激他们对本工作创新性的积极评价及其对所提出的跨域高光谱图像分类方法在整体研究框架和方法动机方面潜力与实际价值的认可。以下是我们对审稿人对FGAPA担忧问题的回复。
+We sincerely thank the two reviewers for their careful evaluation of the manuscript and their constructive comments. We fully concur with the reviewers' positive assessment of the innovation of this work and the potential and value of the proposed cross-domain hyperspectral image classification method. Below are our specific responses to the reviewers' concerns regarding FGAPA.
 
 ## **Response to Reviewer 1**
 
 1.The experiments provide good initial evidence for the method, but need to go further in order to fully establish the value of the approach. The training and transfer hinges on the selection of the source domain, so only one experiment here is very limiting. The source domain needs some properties of potential alignment with the target domains, and must somehow be sufficiently rich to cover the possibilities. So it isn't clear how robust the method is in general, or how to pick the source domain to begin with, or how the approach can be updated as new domains are sampled.
 
-**对于源域的选取，为了方便下游任务的进行，源域的类别数通常要大于或等于目标域类别数，这样训练得到的度量空间才可为目标域任务服务。Chikusei 数据集包含了多样化的景观类别（19类），可为跨域小样本学习提供广泛的知识支持。另外，Chikusei 数据集与目标域存在显著的域间差异，使其成为在具有挑战性的条件下验证我们方法有效性的理想选择。因此，FGAPA使用Chikusei数据集作为源域数据集。**
+**To ensure the effectiveness of the method, the source domain typically needs to cover no fewer classes than the target domain, thereby constructing a sufficiently representative metric space for the downstream task of the target domain. The Chikusei dataset contains 19 diverse land-cover classes, which can provide rich prior knowledge for cross-domain few-shot learning. Moreover, there exists a significant domain shift between Chikusei and the target domain, making it suitable for validating the generalization capability of our method under more challenging conditions. Therefore, we select the Chikusei dataset as the source domain in this study.**
 
-**为证明我们的方法对于不同的源域都具有很好的鲁棒性和健壮性，我们额外选取了Hanchuan作为源域数据集进行实验。Hanchuan与Chikusei一样拥有丰富的景观类别（16类），并与目标域拥有显著差异。Table 1 展示了以 Hanchuan 作为源域、仅使用五个标记样本时，不同方法在 Indian Pines、Salinas 和 Botswana 数据集（作为目标域）上的性能对比。由于时间问题，我们选取了同为域适应方法的DCFSL、MLPA和利用对比学习捕捉域间差异的CTF-SSCL作为对比方法予以论证。**
+**To verify the robustness of our method across different source domains, we additionally selected Hanchuan as a source domain for experimentation. This dataset also contains a rich variety of land-cover classes (16 classes) and exhibits a significant domain shift from the target domains. Table 1 presents the classification performance of our method on the Indian Pines, Salinas, and Botswana target domains when using Hanchuan as the source domain and only five labeled samples, in comparison with mainstream domain adaptation methods including DCFSL, MLPA, and the contrastive learning-based CTF-SSCL.**
 
 <center><p>Table 1:Classification Results (Mean ± Std) with Hanchuan dataset as Source Domain</p></center>
 
-<table style="font-size: 0.875em;">
+<table style="font-size: 0.75em;">
     <tr>
         <th rowspan="2">Method</th>
         <th colspan="3" class="dataset-header"><center>Indian Pines</center></th>
@@ -80,7 +80,7 @@
     </tr>
 </table>
 
-**从Table 1中可以看到，FGAPA在Hanchuan作为源域的情况下，在三个数据集取得的OA、AA、Kappa远优于所有对比方法。以OA为例，与同为域适应方法的DCFSL和MLPA相比，FGAPA的OA在Indian_pines数据集上分别以6.84%，8.5%的优势领先，在Salinas和Botswana上显示出同样趋势。与以泛化性著称的对比学习方法CTF-SSCL相比，我们的方法集成的ACA模块通过对抗的域对齐策略展现出强大性能，同时从方差也可看出我们的方法具有更好的稳定性。综上所述，FGAPA在不同源域下（Chikusei、Hanchuan）均具有很好的稳健性与鲁棒性。**
+**As shown in Table 1, when using Hanchuan as the source domain, FGAPA achieves significantly higher OA, AA, and Kappa values across all three datasets compared to all benchmark methods. Taking OA as an example, FGAPA outperforms DCFSL and MLPA by 6.84% and 8.5%, respectively, on Indian Pines, with similar advantages observed on Salinas and Botswana. Compared to the contrastive learning-based CTF-SSCL, our method demonstrates stronger performance through the adversarial domain alignment strategy of the ACA module, while lower variance further confirms its superior stability. In summary, FGAPA exhibits consistent robustness and reliability across different source domains, namely Chikusei and Hanchuan.**
 
 
 
@@ -88,7 +88,7 @@
 
 1.Some definitions are missing in the paragraph about FSL in HSIC. What is FSL? What are source and target domains?
 
-**FSL 本质上是一种元学习方法，可以从不同的任务中获取可转移的知识，以快速适应新任务。 通常，它在 N-way K-shot 设置下运行，每类使用 K 个标记样本来训练 N 类分类器 。如图1所示，FSL任务由带标签的样本组成的集合Support set与查询样本组成的集合Query set组成。查询集与支持集构建FSL任务并一同输入特征提取器中进行特征提取。Support features代表支持集经由特征提取器提取得到的特征表示，Query features则是查询集经提取得到的特征表示。FSL通过计算由查询特征到每个类的支持特征之间的距离来判定其类别。通过这样的FSL任务，让模型学会学习，通过给定的支持集判定查询集样本的类别。在HSIC中，也是同样道理。通过选取少量标记的高光谱样本作为支持集，大量无标记的样本作为查询集来进行FSL任务。**
+**Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. Both are fed into a feature extractor, yielding support features and query features, respectively. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the categories of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
 
 
 
@@ -96,7 +96,7 @@
 
 <center><p>Fig1：Few Shot Learning</p></center>
 
-**在跨域少样本学习中，源域是一个数据丰富、标注完善的数据集，模型首先在此进行预训练，学习通用的特征和模式（即让模型学会学习）。而目标域则是我们真正用于下游任务但标记样本极度稀缺的新数据集，其数据分布和类别通常与源域不同。整个过程的核心目标，就是利用从源域获得的先验知识，仅凭目标域中极少的样本（如每类1-5个标记样本），快速适应并解决目标域的新任务。**
+**In cross-domain few-shot learning, the source domain is a dataset rich in data and thoroughly labeled, where the model is first pre-trained to learn general features and patterns (i.e., to enable the model to learn how to learn). The target domain, on the other hand, is a new dataset for the actual downstream task but with extremely limited labeled samples, and its data distribution and classes are typically different from those of the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain, using only a minimal number of samples in the target domain (such as 1–5 labeled samples per class), to rapidly adapt to and address the new tasks in the target domain.**
 
 2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
@@ -104,37 +104,39 @@
 
 <center><p>Fig2: Overall Framework of FGAPA</p></center>
 
-**Support features代表支持集经由特征提取器提取得到的特征表示，Query features则是查询集经提取得到的特征表示。如图2所示，通过度量Query features与Support features中心形成的原型之间的欧式距离来判定Query features所属类别。**xxxxxx
+**Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
 
-**FSL任务同时在源域和目标域上进行，其$\mathcal{L}_{fsl}$由$\mathcal{L}_{fsl}^t$和$\mathcal{L}_{fsl}^s$两部分组成，因此我们对其进行省略仅使用$\mathcal{L}_{fsl}$代表。原图2中注意力分数实际对应文中Correlation calculation。同时，$p_i$代表原型库的第i类原型。我们对图2进行更新，以便读者了解FGAPA的整体工作流程。**
+**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $\mathcal{L}_{fsl}$ consists of two components, $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
 3.Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
 
-**在Equation (5) and (6)中，MLP层的权重与偏置的维度具体设置如下：在FGAPA中经由特征提取得到的特征最终都被统一为128*1的特征维度，MLP第一层权重分别对应（128，64）其中128代表输入维度，64为输出维度，偏置维度为64。MLP第二层权重则对应（64，128），其中64代表输入维度，128为输出维度，偏置维度为128。**
+**In FGAPA, the feature dimensions output by the feature extractor are uniformly set to 128×1. As specified in Equations (5) and (6), the weights and biases of the MLP layers are configured as follows: the first layer has a weight dimension of (128, 64) (input dimension 128, output dimension 64) and a bias dimension of 64; the second layer has a weight dimension of (64, 128) (input dimension 64, output dimension 128) and a bias dimension of 128.**
 
 4.Why do you need to transform the features and prototypes with MLP?
 
-**首先，特征与原型来自于不同的语义层次。通过MLP层将其共同映射到同一个可比较的特征空间。其次MLP层中间的Relu激活函数可以确保模型学习更复杂的非线性关系以提高其表达能力。因此，通过将特征与原型通过MLP层进行转换，能更好的在特征空间中进行相关性计算，并让模型学习更加复杂的表示以提升表达能力。**
+**First, features and prototypes originate from different semantic levels. The MLP layer maps them into a comparable feature space, while the ReLU activation function within it helps the model learn more complex nonlinear relationships, thereby enhancing its expressive power. Thus, transforming both features and prototypes through the MLP enables more effective correlation computation in the feature space and facilitates the learning of richer, more expressive representations.**
 
 5.Why is it a cosine similarity (normalized dot product) in equation (7) and not in equation (10) ?
 
-**事实上公式（7）和公式（10）都使用了余弦相似度。具体来讲，公式（10）与公式（7）的核心思想相同。它们都使用余弦相似度进行相关性计算。使用余弦相似度的原因是其与原型学习天然契合，更适合高维嵌入空间，且优化稳定。同时，余弦相似度配合温度系数可以灵活控制softmax平滑程度，提升训练稳定性。我们会对公式（10）进行对应修改，以便读者能够更清晰地了解方法细节，避免不必要的误解。**
+**Both Equation (7) and Equation (10) employ cosine similarity for correlation computation. This approach is naturally aligned with prototype learning, better suited for high-dimensional embedding spaces, and maintains optimization stability. Moreover, the temperature coefficient adjusts the sharpness of the softmax distribution, further enhancing training stability. To clarify the methodological details, Equation (10) will be revised accordingly to avoid potential ambiguity.**
 
 6.What is the total optimization objective of the model in the end? It never appears.
 
-**我们的最终优化目标由少样本学习损失$ L_{\text{fsl}}$,域内对齐损失$L_{\text{in}}$以及跨域对齐损失$L_{\text{cross}}$三部分组成。The final loss is defined as:**
+**The overall loss function of our method consists of three components: the few-shot learning loss $L_{\text{fsl}}$, the intra-domain alignment loss $L_{\text{in}}$, and the cross-domain alignment loss $L_{\text{cross}}$. It is defined as follows:**
+
 $$
-Loss = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
+\text{Loss} = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
 $$
-**Here,$\lambda_1$ and $\lambda_2$ represent the weighting hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1, with increments of 0.1. The optimal parameters obtained through tuning are $\lambda_1$ = 0.5 and $\lambda_2$ = 0.3.**
+
+**Here, $\lambda_1$ and $\lambda_2$ are weighting hyperparameters for $L_{\text{in}}$ and $L_{\text{cross}}$, respectively. Their values are tuned within the range [0, 1] with a step size of 0.1. After optimization, the best-performing values are set as $\lambda_1 = 0.5$ and $\lambda_2 = 0.3$.**
 
 7.You talk about 4 datasets. Where do they come from? Is it public data? Is it published? How do you remove noisy bands?
 
-**本文使用四个数据集进行实验验证，其中Chikusei作为源域，另外三个公开数据集Indian_pines、Salinas和Botswana为目标域数据集。以下为它们的详细信息、数据来源以及噪声去除情况介绍：**
+**This study employs four public hyperspectral datasets for experimentation, using Chikusei as the source domain and Indian Pines, Salinas, and Botswana as the target domains. The detailed information, data sources, and noise removal procedures for each dataset are as follows:**
 
 - **Chikusei**
 
-**Chikusei数据集由日本筑西市的 Headwall Hyperspec-VNIR-C 传感器捕获。可在https://naotoyokoya.com/Download.html获取， 它由 2517 × 2335 像素组成，空间分辨率为 2.5 m。 总共提供128个频段，覆盖波长从343到1018 nm，共19个类别。图3展示了Chikusei数据集上的原始图像、Ground Truth以及其19个地物类别标签与每个类别的像素数目。**
+**The Chikusei dataset was captured by the Headwall Hyperspec-VNIR-C sensor over Chikusei City, Japan. It is publicly available at https://naotoyokoya.com/Download.html and consists of 2517 × 2335 pixels with a spatial resolution of 2.5 m. The data provides 128 spectral bands covering wavelengths from 343 to 1018 nm and includes 19 land-cover classes. Figure 3 presents the original image, the ground truth map, and the corresponding 19 class labels along with the pixel count for each category.**
 
 
 
@@ -146,7 +148,7 @@ $$
 
 - **Indian_pines**
 
-**Indian_pines数据集由美国印第安纳州上空的机载可见光/红外成像光谱仪 (AVIRIS) 收集。可在https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes获取， 它包含 145 × 145 像素，空间分辨率约为 20 m。 去除 20 个水吸收带（104-105、150-163 和 220）后，使用 400 至 2500 nm 范围内的 200 个吸收带。 图4展示了Indian_pines数据集上的原始图像、Ground Truth以及其16个地物类别标签与每个类别的像素数目。**
+**The Indian Pines dataset was collected by the Airborne Visible/Infrared Imaging Spectrometer (AVIRIS) over Indiana, USA. It is publicly accessible at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and comprises 145 × 145 pixels with a spatial resolution of approximately 20 m. After removing 20 water absorption bands (104–105, 150–163, and 220), 200 spectral bands covering the wavelength range from 400 to 2500 nm are used. Figure 4 displays the original image, the ground truth map, and the corresponding 16 land-cover class labels along with the pixel count for each category.**
 
 
 
@@ -158,9 +160,7 @@ $$
 
 - **Salinas**
 
-**Salinas数据集由美国加利福尼亚州萨利纳斯山谷的 AVIRIS 传感器收集。可在https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes获取, 它由 512 × 217 像素组成，空间分辨率约为 3.7 m。 总共使用了覆盖 400-2500 nm 的 204 个波段，分为 16 个类别。图5展示了Salinas数据集上的原始图像、Ground Truth以及其16个地物类别标签与每个类别的像素数目。**
-
-
+**The Salinas dataset was collected by the AVIRIS sensor over the Salinas Valley in California, USA. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and consists of 512 × 217 pixels with a spatial resolution of approximately 3.7 m. A total of 204 spectral bands covering the range of 400–2500 nm are used, divided into 16 land-cover classes. Figure 5 shows the original image, the ground truth map, and the corresponding 16 class labels along with the pixel count for each category.**
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/SA_compressed.png" alt="替代文本" title="图片标题" width=500>
 
@@ -170,7 +170,7 @@ $$
 
 - **Botswana**
 
-**Botswana数据集由 NASA 的 EO1 卫星在 BO 奥卡万戈三角洲上空获取。可在https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes获取。它的尺寸为1476×256像素，空间分辨率约为20m。 在242个光谱波段（400-2500 nm）中，去除噪声波段后使用145个波段（1-9、56-81、98-101、120-133和165-186）。图6展示了Botswana数据集上的原始图像、Ground Truth以及其14个地物类别标签与每个类别的像素数目**。
+**The Botswana dataset was acquired by NASA's EO-1 satellite over the Okavango Delta in Botswana. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes. The image size is 1476 × 256 pixels, with a spatial resolution of approximately 20 m. Out of the original 242 spectral bands (400–2500 nm), 145 bands are used after removing noisy ones (specifically bands 1–9, 56–81, 98–101, 120–133, and 165–186). Figure 6 presents the original image, the ground truth map, and the corresponding 14 land-cover class labels along with the pixel count for each category.**
 
 
 
@@ -182,14 +182,14 @@ $$
 
 8.In the experimental protocol, you have to detail the metrics more in detail. What do they measure? How are they calculated? Why are they relevant for the task?
 
-**我们在文中使用了常用于分类评价三个衡量指标，Overall Accuracy(OA)、Average Accuracy(AA)、Kappa Coefficient(Kappa)。其中，OA用来反映整体分类正确率，AA关注各类别精度的平均表现以避免被样本数占比多的类别主导，Kappa则校正了随机一致性的影响，更可靠地评估分类结果与真实标签的一致程度。它们的定义如下：**
+**Three commonly used metrics for evaluating classification performance are employed in this study: Overall Accuracy (OA), Average Accuracy (AA), and the Kappa coefficient. OA measures the overall classification correctness, AA calculates the average accuracy across all classes to avoid dominance by classes with a large number of samples, and Kappa provides a more reliable assessment of agreement between the classification results and ground truth by correcting for random consistency. The definitions of these metrics are as follows:**
 
 - **OA:** 
 
 $$
 OA = \frac{\sum_{i=1}^{c} TP_i}{N}
 $$
-​        其中，$TP_i$代表第i类被正确分类的数目，N为所有样本总数，c代表类别总数。
+​        **where $TP_i$ denotes the number of correctly classified samples for the i-th class, N is the total number of samples, and c represents the total number of classes.**
 
 - **AA:** 
 
@@ -197,19 +197,19 @@ $$
 AA = \frac{1}{c} \sum_{i=1}^{c} \frac{TP_i}{N_i}
 $$
 
-​         其中，$TP_i$代表第i类被正确分类的数目，$N_i$表示第i类样本的总数，c代表类别总数。
+​         **where $TP_i$ denotes the number of correctly classified samples for the i-th class, $N_i$ represents the total number of samples in the i-th class, and c is the total number of classes.**
 
 -   **Kappa: **
 
 $$
 \kappa = \frac{P_o - P_e}{1 - P_e}
 $$
-$P_o$ 表示模型与随机分类器做出相同类别判断的概率。
-$P_e$ 表示模型与随机分类器基于各自边际分布计算出的理论一致概率。
+**$P_o$ represents the probability that the model and a random classifier assign the same class labels.  
+$P_e$ denotes the theoretical probability of agreement between the model and a random classifier, calculated based on their respective marginal distributions.**
 
 9.As stated in the global comment, the results are missing statistical significance tests to make sure your method is statistically better on these datasets.
 
-**受限于严格的篇幅要求，论文中部分重要内容未能得到充分展开。为此，我们对FGAPA在Chikusei作源域情况下在Indian Pines、Salinas、Botswana三个目标域上进行相关性能的展示并额外附带标准差，以便论证FGAPA在这些数据集上的性能具有统计意义。其中，表2-4分别表示FGAPA在1-5shot情况下在Indian Pines、Salinas、Botswana上的性能统计。所有实验都运行10次，取平均值。**
+**Due to space constraints, some important content in the main text could not be fully elaborated. To address this, we have supplemented the performance results of FGAPA on the three target domains—Indian Pines, Salinas, and Botswana—with Chikusei as the source domain, including standard deviations to demonstrate statistical significance. Tables 2 to 4 present the performance statistics of FGAPA under 1–5 shot settings on the three target domains, respectively. All experiments were independently run 10 times, and the results are reported as averages.**
 
 <center><p>Table 2: Classification Results (Mean ± Standard Deviation) on Indian_Pines Using 1–5 Labeled Samples per Class</p></center>
 
@@ -223,7 +223,7 @@ $P_e$ 表示模型与随机分类器基于各自边际分布计算出的理论�
 
 <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 14px;">   <thead>     <tr style="background-color: #f2f2f2;">       <th rowspan="2">Botswana</th>       <th colspan="8"><center>Method</center></th>     </tr>     <tr style="background-color: #e0e0e0;">       <th>DFSL+NN</th>       <th>DCFSL</th>       <th>HFSL</th>       <th>DM-MRN</th>       <th>FSCF-SSL</th>       <th>CTF-SSCL</th>       <th>MLPA</th>       <th><strong style="color: black;">FGAPA</strong></th>     </tr>   </thead>   <tbody>     <!-- 1-shot -->     <tr>       <th>1-shot</th>       <td>86.88 ± 3.37</td>       <td>85.14 ± 2.96</td>       <td>68.85 ± 5.00</td>       <td>59.91 ± 4.66</td>       <td>68.76 ± 4.89</td>       <td>79.20 ± 3.64</td>       <td>82.72 ± 2.81</td>       <td><strong style="color: black;">90.62 ± 1.71</strong></td>     </tr>      <!-- 2-shot -->     <tr>       <th>2-shot</th>       <td>91.64 ± 2.69</td>       <td>92.79 ± 1.92</td>       <td>82.84 ± 3.75</td>       <td>81.07 ± 3.70</td>       <td>81.55 ± 3.14</td>       <td>89.67 ± 3.57</td>       <td>92.63 ± 1.55</td>       <td><strong style="color: black;">94.95 ± 2.15</strong></td>     </tr>      <!-- 3-shot -->     <tr>       <th>3-shot</th>       <td>94.44 ± 1.94</td>       <td>94.67 ± 1.36</td>       <td>88.83 ± 3.45</td>       <td>86.91 ± 1.93</td>       <td>90.19 ± 3.24</td>       <td>93.31 ± 1.65</td>       <td>94.42 ± 1.98</td>       <td><strong style="color: black;">96.90 ± 1.31</strong></td>     </tr>      <!-- 4-shot -->     <tr>       <th>4-shot</th>       <td>95.54 ± 1.46</td>       <td>95.98 ± 1.23</td>       <td>94.19 ± 2.49</td>       <td>88.82 ± 2.46</td>       <td>93.32 ± 2.36</td>       <td>94.93 ± 0.85</td>       <td>95.30 ± 1.34</td>       <td><strong style="color: black;">97.16 ± 1.35</strong></td>     </tr>      <!-- 5-shot -->     <tr>       <th>5-shot</th>       <td>96.48 ± 0.84</td>       <td>96.90 ± 1.03</td>       <td>94.56 ± 1.61</td>       <td>92.55 ± 1.79</td>       <td>95.81 ± 1.43</td>       <td>96.05 ± 1.32</td>       <td>96.65 ± 1.04</td>       <td><strong style="color: black;">98.22 ± 1.31</strong></td>     </tr>   </tbody> </table>
 
-从表2-4中可以看出，FGAPA在Indian_pines、Salinas、Botswana上，1~5个标记样本的情况下，始终优于其他所有对比方法。例如，5-shot情况下FGAPA通过ACA模块与FFA模块，提取判别特征的同时缩小域间差异，展现出强劲性能，具体来说，在Indian Pines、Salinas、Botswana上分别以2.69%，3.07%，1.32%的优势领先于次优方法。1-shot情况下FFA模块获得的判别性特征能够明确类别分布，提升泛化性。具体来说，在Indian Pines、Salinas、Botswana上分别以5.72%，2.7%，3.74%的优势领先于次优方法。同时FGAPA在所有情况下的标准差普遍低于其他对比方法。这表明FGAPA在有效样本情况下的强大性能，在1shot等极端条件下的高鲁棒性以及突出的稳定性。综上所述，从统计结果来看,FGAPA的性能具有显著优势。
+As shown in Tables 2-4, under the 1–5 shot settings, FGAPA consistently outperforms all comparative methods across the three datasets: Indian Pines, Salinas, and Botswana. Specifically, under the 5-shot condition, the collaborative work of its ACA and FFA modules extracts discriminative features while reducing inter-domain differences, leading to outstanding performance—surpassing the second-best method by 2.69%, 3.07%, and 1.32% on the three datasets, respectively. Under the 1-shot condition, the discriminative features captured by the FFA module better characterize class distributions and enhance generalization, achieving advantages of 5.72%, 2.7%, and 3.74%, respectively. Moreover, FGAPA exhibits generally lower standard deviations than other methods in all scenarios, indicating its excellent performance, robustness, and stability across varying sample conditions. In summary, the statistical results fully demonstrate the significant superiority of FGAPA.
 
 10.There are temperature parameters in equations (7) and (10). How do you tune these? This information is lacking.
 
@@ -231,7 +231,7 @@ Same for hyperparameters in the losses: how are the weights selected? On which d
 
 What is the batch size used? (This is necessary for reproducibility.)
 
-在本实验中，需要设置超参数包含公式（7）和（10）的温度参数τ以及总损失中的λ1和λ2以及模型训练中的batch size,下面我们对这些参数的具体设定进行介绍：
+**In this experiment, the hyperparameters include the temperature parameter τ in Equations (7) and (10), the weighting coefficients λ₁ and λ₂ in the total loss, and the batch size used during model training. The specific settings for these parameters are described below.**
 
 - **For the temperature parameter τ , we set it to a universal value of 0.1 based on experience.**
 
@@ -240,13 +240,13 @@ Loss = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
 $$
 - **$λ_1$and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
 
-- **此外，我们还给出了FGAPA中batch-size的大小设定，其被设置为64。它用来控制模型训练过程中每次参数更新时所使用的样本数。在神经网络的训练过程中，数据分成若干批次，每个批次包含batch size个样本。这样既可以提高模型训练效率，更可以抑制噪声增强模型训练稳定性。**
+- **Furthermore, we set the batch size in FGAPA to 64, which determines the number of samples used in each parameter update during training. Throughout the training process, the data are divided into multiple batches, each containing 64 samples. This configuration not only improves training efficiency but also helps suppress noise and enhances the stability of model training.**
 
 11.The last paragraph of the introduction does not contain the appropriate acronym (FFE instead of FFA). 
 
 ​      Figure 3 is too small. 
 
-我们会在后续的论文中订正将FFA误写成FFE的问题，以提升论文的质量与可读性。另外，我们对图3进行了放大展示以使读者更直观地观察到各方法间的性能差异。
+**The term FFA, which was mistakenly written as FFE, will be corrected in the subsequent version of the paper to enhance its quality and readability. Additionally, Figure 3 has been enlarged to allow readers to more clearly observe the performance differences between the meth**ods.
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed.png" alt="替代文本" title="图片标题" width=1200>
 
@@ -254,10 +254,10 @@ $$
 
 12.I am not an expert in hyperspectral image processing, and it is difficult to understand the task from the text. It would be highly beneficial to add a paragraph that clearly presents the task. For example, what does Figure 2 represent? The bibliography is also somewhat limited.
 
-**我们衷心的感谢审稿人对论文提出的建议，我们也会在FGAPA修订版本对符号定义及核心概念进行更详尽的说明，增强全文可读性。与此同时，我们会补充更多相关参考文献去调研相关工作的研究现状。**
+**We sincerely thank the reviewers for their valuable suggestions. In the revised version of FGAPA, we will provide more detailed explanations of the notations and core concepts to enhance the overall readability. Additionally, we will supplement relevant references to better survey the current research landscape.**
 
 ## **The ending**
 
-**我们非常感激审稿人对本工作创新性的积极评价及其对所提出的跨域高光谱图像分类方法在整体研究框架和方法动机方面潜力与实际价值的认可。完全认同审稿人提出的主要关切。我们对审稿人所提出的模型对新源域及目标域的鲁棒性等进一步探讨，FGAPA中基本概念的可读性、实验超参数的设置，方法的细节以及详细实验的优势统计意义给予了全面回复。希望通过本补充材料可以消除审稿人的疑虑。同时再次感谢审稿人提出的宝贵意见，这些建议帮助我们明确了论文中仍需改进的关键方面。我们相信，在充分吸纳这些反馈后，本文的质量与表达将得到显著提升。**
+**We sincerely appreciate the reviewers' positive assessment of the novelty of this work and their recognition of the potential and practical value of the proposed cross-domain hyperspectral image classification method within the overall research framework and methodological motivation. We fully acknowledge the main concerns raised by the reviewers and have provided comprehensive responses regarding the robustness of FGAPA to new source and target domains, the readability of its fundamental concepts, the setting of experimental hyperparameters, methodological details, and the statistical significance of the experimental results. We hope that this supplementary material addresses the reviewers' concerns. Once again, we thank the reviewers for their valuable suggestions, which have helped us identify key areas for improvement in the manuscript. We believe that incorporating this feedback will significantly enhance the quality and clarity of the paper.**
 
  
