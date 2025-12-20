@@ -12,7 +12,7 @@ We sincerely thank the two reviewers for their careful evaluation of the manuscr
 
 <center><p>Table 1:Classification Results (Mean ± Std) with Hanchuan dataset as Source Domain</p></center>
 
-<table style="font-size: 0.75em;">
+<table style="font-size: 0.6em;">
     <tr>
         <th rowspan="2">Method</th>
         <th colspan="3" class="dataset-header"><center>Indian Pines</center></th>
@@ -80,6 +80,7 @@ We sincerely thank the two reviewers for their careful evaluation of the manuscr
     </tr>
 </table>
 
+
 **As shown in Table 1, when using Hanchuan as the source domain, FGAPA achieves significantly higher OA, AA, and Kappa values across all three datasets compared to all benchmark methods. Taking OA as an example, FGAPA outperforms DCFSL and MLPA by 6.84% and 8.5%, respectively, on Indian Pines, with similar advantages observed on Salinas and Botswana. Compared to the contrastive learning-based CTF-SSCL, our method demonstrates stronger performance through the adversarial domain alignment strategy of the ACA module, while lower variance further confirms its superior stability. In summary, FGAPA exhibits consistent robustness and reliability across different source domains, namely Chikusei and Hanchuan.**
 
 
@@ -88,7 +89,7 @@ We sincerely thank the two reviewers for their careful evaluation of the manuscr
 
 1.Some definitions are missing in the paragraph about FSL in HSIC. What is FSL? What are source and target domains?
 
-**Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. Both are fed into a feature extractor, yielding support features and query features, respectively. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the categories of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
+**Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the categories of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
 
 
 
@@ -246,9 +247,9 @@ $$
 
 ​      Figure 3 is too small. 
 
-**The term FFA, which was mistakenly written as FFE, will be corrected in the subsequent version of the paper to enhance its quality and readability. Additionally, Figure 3 has been enlarged to allow readers to more clearly observe the performance differences between the meth**ods.
+**The term FFA, which was mistakenly written as FFE, will be corrected in the subsequent version of the paper to enhance its quality and readability. Additionally, Figure 3 has been enlarged to allow readers to more clearly observe the performance differences between the methods.**
 
-<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed.png" alt="替代文本" title="图片标题" width=1200>
+<img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed%20(1).png" alt="替代文本" title="图片标题" width=1200>
 
 <center><p>Figure 7: Revised version of Figure 3 in FGAPA</p></center>
 
