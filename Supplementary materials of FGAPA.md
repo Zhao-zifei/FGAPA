@@ -207,6 +207,8 @@ $$
 $$
 \kappa = \frac{P_o - P_e}{1 - P_e}
 $$
+
+
 **$P_o$ represents the probability that the model and a random classifier assign the same class labels.  
 $P_e$ denotes the theoretical probability of agreement between the model and a random classifier, calculated based on their respective marginal distributions.**
 
@@ -265,6 +267,7 @@ $$
 
 
  
+
 
 
 
