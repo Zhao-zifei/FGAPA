@@ -236,10 +236,11 @@ As shown in Tables 2-4, under the 1–5 shot settings, FGAPA consistently outper
 
 - **For the temperature parameter τ , we set it to a universal value of 0.1 based on experience.**
 
+- **In the final loss, two hyperparameters controlling the dual-domain adversarial strategy are included, as specifically shown below:**
 $$
 Loss = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
 $$
-- **$λ_1$ and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
+**$λ_1$ and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
 
 - **Furthermore, we set the batch size in FGAPA to 64, which determines the number of samples used in each parameter update during training. Throughout the training process, the data are divided into multiple batches, each containing 64 samples. This configuration not only improves training efficiency but also helps suppress noise and enhances the stability of model training.**
 
@@ -247,7 +248,7 @@ $$
 
 ​      Figure 3 is too small. 
 
-**The term FFA, which was mistakenly written as FFE, will be corrected in the subsequent version of the paper to enhance its quality and readability. Additionally, Figure 3 has been enlarged to allow readers to more clearly observe the performance differences between the methods.**
+**Following the suggestions, we have corrected all instances of FFE to FFA in the text. Furthermore, Figure 3 has been enlarged to enable readers to more clearly observe the performance differences among the methods.**
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed%20(1).png" alt="替代文本" title="图片标题" width=1200>
 
@@ -255,7 +256,7 @@ $$
 
 12.I am not an expert in hyperspectral image processing, and it is difficult to understand the task from the text. It would be highly beneficial to add a paragraph that clearly presents the task. For example, what does Figure 2 represent? The bibliography is also somewhat limited.
 
-**We sincerely thank the reviewers for their valuable suggestions. In the revised version of FGAPA, we will provide more detailed explanations of the notations and core concepts to enhance the overall readability. Additionally, we will supplement relevant references to better survey the current research landscape.**
+**We sincerely thank the reviewer for the valuable suggestions. In the revised manuscript, we will provide clearer explanations of the notations and core concepts to improve readability. Additionally, we will include relevant references to better reflect the current research landscape.**
 
 ## **The ending**
 
@@ -263,6 +264,7 @@ $$
 
 
  
+
 
 
 
