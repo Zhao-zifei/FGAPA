@@ -89,7 +89,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 1.Some definitions are missing in the paragraph about FSL in HSIC. What is FSL? What are source and target domains?
 
-**Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the categories of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
+**Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the classes of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
 
 
 
@@ -264,6 +264,7 @@ $$
 
 
  
+
 
 
 
