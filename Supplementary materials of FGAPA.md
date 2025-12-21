@@ -1,6 +1,6 @@
 # Supplementary materials of FGAPA
 
-We sincerely thank the two reviewers for their careful evaluation of the manuscript and their constructive comments. We fully concur with the reviewers' positive assessment of the innovation of this work and the potential and value of the proposed cross-domain hyperspectral image classification method. Below are our specific responses to the reviewers' concerns regarding FGAPA.
+We sincerely thank the two reviewers for their thorough evaluation of our manuscript and for providing constructive and insightful comments. We are also deeply grateful for the reviewers' positive assessment of the novelty of this work, as well as their recognition of the potential and value of the proposed cross-domain hyperspectral image classification method, FGAPA.  Below are our specific responses to the reviewers' concerns regarding FGAPA.
 
 ## **Response to Reviewer 1**
 
@@ -263,3 +263,4 @@ $$
 
 
  
+
