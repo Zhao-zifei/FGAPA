@@ -237,9 +237,11 @@ As shown in Tables 2-4, under the 1–5 shot settings, FGAPA consistently outper
 - **For the temperature parameter τ , we set it to a universal value of 0.1 based on experience.**
 
 - **In the final loss, two hyperparameters controlling the dual-domain adversarial strategy are included, as specifically shown below:**
+
 $$
 Loss = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
 $$
+
 **$λ_1$ and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
 
 - **Furthermore, we set the batch size in FGAPA to 64, which determines the number of samples used in each parameter update during training. Throughout the training process, the data are divided into multiple batches, each containing 64 samples. This configuration not only improves training efficiency but also helps suppress noise and enhances the stability of model training.**
@@ -264,6 +266,7 @@ $$
 
 
  
+
 
 
 
