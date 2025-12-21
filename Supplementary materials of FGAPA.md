@@ -209,7 +209,7 @@ $$
 $$
 
 
-** where $P_o$ represents the probability that the model and a random classifier assign the same class labels,$P_e$ denotes the theoretical probability of agreement between the model and a random classifier, calculated based on their respective marginal distributions.**
+**where $P_o$ represents the probability that the model and a random classifier assign the same class labels,$P_e$ denotes the theoretical probability of agreement between the model and a random classifier, calculated based on their respective marginal distributions.**
 
 9.As stated in the global comment, the results are missing statistical significance tests to make sure your method is statistically better on these datasets.
 
@@ -265,6 +265,7 @@ $$
 
 
  
+
 
 
 
