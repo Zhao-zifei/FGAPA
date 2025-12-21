@@ -97,7 +97,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 <center><p>Fig1：Few shot learning</p></center>
 
-**In cross-domain few-shot learning, the source domain is a dataset rich in data and thoroughly labeled, where the model is first pre-trained to learn general features and patterns (i.e., to enable the model to learn how to learn). The target domain, on the other hand, is a new dataset for the actual downstream task but with extremely limited labeled samples, and its data distribution and classes are typically different from those of the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain, using only a minimal number of samples in the target domain (such as 1–5 labeled samples per class), to rapidly adapt to and address the new tasks in the target domain.**
+**In cross-domain FSL, the source domain refers to a dataset with abundant, fully labeled samples, where the model is initially pre-trained to learn general features and patterns (i.e., to “learn how to learn”). The target domain is the dataset for the downstream task, typically with very few labeled samples and a data distribution and set of classes different from the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain to quickly adapt to new tasks in the target domain using only a minimal number of labeled samples (e.g., 1–5 per class).**
 
 2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
@@ -107,7 +107,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
 
-**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $\mathcal{L}_{fsl}$ consists of two components, $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
+**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $L_{\text{fsl}}$ consists of two components, $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
 3.Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
 
@@ -263,6 +263,7 @@ $$
 
 
  
+
 
 
 
