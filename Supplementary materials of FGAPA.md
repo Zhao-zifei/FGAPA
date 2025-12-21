@@ -102,7 +102,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
 ![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/overall%20framework%20of%20FGAPA_compressed.png)
-
+<img src="[https://gitee.com/abcd123123410513/images/raw/master/imgs/FSL_compressed.png](https://gitee.com/abcd123123410513/images/raw/master/imgs/FGAPA_compressed.png)" alt="替代文本" title="图片标题">
 <center><p>Fig2: Overall framework of FGAPA</p></center>
 
 **Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
@@ -264,6 +264,7 @@ $$
 
 
  
+
 
 
 
