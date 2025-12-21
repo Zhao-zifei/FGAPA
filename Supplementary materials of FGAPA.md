@@ -10,7 +10,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **To further validate the robustness of our method across different source domains, we additionally conduct experiments using the Hanchuan dataset as the source domain. This dataset also contains a rich variety of land-cover classes (16 classes) and exhibits a substantial domain shift from the target domains. Table 1 reports the classification performance of our method on the Indian Pines, Salinas, and Botswana target domains using Hanchuan as the source domain with only five labeled samples per class, in comparison with representative domain adaptation methods, including DCFSL, MLPA, and the contrastive learning-based CTF-SSCL.**
 
-<center><p>Table 1：Classification results (mean ± std) with Hanchuan dataset as source domain</p></center>
+<center><p>Table 1:Classification results (mean ± std) with Hanchuan dataset as source domain</p></center>
 
 <table style="font-size: 0.6em;">
     <tr>
@@ -265,6 +265,7 @@ $$
 
 
  
+
 
 
 
