@@ -99,7 +99,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **In cross-domain FSL, the source domain refers to a dataset with abundant, fully labeled samples, where the model is initially pre-trained to learn general features and patterns (i.e., to “learn how to learn”). The target domain is the dataset for the downstream task, typically with very few labeled samples and a data distribution and set of classes different from the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain to quickly adapt to new tasks in the target domain using only a minimal number of labeled samples (e.g., 1–5 per class).**
 
-2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
+2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
 ![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/overall%20framework%20of%20FGAPA_compressed.png)
 
@@ -107,15 +107,15 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
 
-**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $L_{\text{fsl}}$ consists of two components, $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
+**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $L_{\text{fsl}}$ consists of two components, $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the "correlation calculation" described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
 3.Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
 
-**In FGAPA, the feature dimensions output by the feature extractor are uniformly set to 128×1. As specified in Equations (5) and (6), the weights and biases of the MLP layers are configured as follows: the first layer has a weight dimension of (128, 64) (input dimension 128, output dimension 64) and a bias dimension of 64; the second layer has a weight dimension of (64, 128) (input dimension 64, output dimension 128) and a bias dimension of 128.**
+**In FGAPA, the feature extractor outputs features of dimension 128×1. As specified in Equations (5) and (6), the MLP layers are configured as follows: the first layer has weights of size (128, 64) and biases of size 64, and the second layer has weights of size (64, 128) and biases of size 128.**
 
 4.Why do you need to transform the features and prototypes with MLP?
 
-**First, features and prototypes originate from different semantic levels. The MLP layer maps them into a comparable feature space, while the ReLU activation function within it helps the model learn more complex nonlinear relationships, thereby enhancing its expressive power. Thus, transforming both features and prototypes through the MLP enables more effective correlation computation in the feature space and facilitates the learning of richer, more expressive representations.**
+**Since features and prototypes originate from different semantic levels, the MLP layer maps them into a comparable feature space. Meanwhile, the ReLU activation function within MLP further helps  the model to learn more complex nonlinear relationships, thereby enhancing its expressive capability. Therefore, transforming both features and prototypes through the MLP allows for more effective correlation computation in the feature space and facilitates the learning of richer, more expressive representations.**
 
 5.Why is it a cosine similarity (normalized dot product) in equation (7) and not in equation (10) ?
 
@@ -133,11 +133,11 @@ $$
 
 7.You talk about 4 datasets. Where do they come from? Is it public data? Is it published? How do you remove noisy bands?
 
-**This study employs four public hyperspectral datasets for experimentation, using Chikusei as the source domain and Indian Pines, Salinas, and Botswana as the target domains. The detailed information, data sources, and noise removal procedures for each dataset are as follows:**
+**This study conducts experiments on four publicly available hyperspectral datasets. Specifically, Chikusei is used as the source domain, while Indian Pines, Salinas, and Botswana serve as the target domains. The detailed information, data sources, and noise removal procedures for each dataset are as follows:**
 
 - **Chikusei**
 
-**The Chikusei dataset was captured by the Headwall Hyperspec-VNIR-C sensor over Chikusei City, Japan. It is publicly available at https://naotoyokoya.com/Download.html and consists of 2517 × 2335 pixels with a spatial resolution of 2.5 m. The data provides 128 spectral bands covering wavelengths from 343 to 1018 nm and includes 19 land-cover classes. Figure 3 presents the original image, the ground truth map, and the corresponding 19 class labels along with the pixel count for each category.**
+**The Chikusei dataset was captured by the Headwall Hyperspec-VNIR-C sensor over Chikusei City, Japan. It is publicly available at https://naotoyokoya.com/Download.html and consists of 2517 × 2335 pixels with a spatial resolution of 2.5 m. The data provides 128 spectral bands covering wavelengths from 343 to 1018 nm and includes 19 land-cover classes. Figure 3 shows the pseudo-color image, the ground truth, and the corresponding class labels along with the number of samples for each class.**
 
 
 
@@ -149,7 +149,7 @@ $$
 
 - **Indian_pines**
 
-**The Indian Pines dataset was collected by the Airborne Visible/Infrared Imaging Spectrometer (AVIRIS) over Indiana, USA. It is publicly accessible at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and comprises 145 × 145 pixels with a spatial resolution of approximately 20 m. After removing 20 water absorption bands (104–105, 150–163, and 220), 200 spectral bands covering the wavelength range from 400 to 2500 nm are used. Figure 4 displays the original image, the ground truth map, and the corresponding 16 land-cover class labels along with the pixel count for each category.**
+**The Indian Pines dataset was collected by the Airborne Visible/Infrared Imaging Spectrometer (AVIRIS) over Indiana, USA. It is publicly accessible at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and comprises 145 × 145 pixels with a spatial resolution of approximately 20 m. After removing 20 water absorption bands (104–105, 150–163, and 220), 200 spectral bands covering the wavelength range from 400 to 2500 nm are used. Figure 4 shows the pseudo-color image, the ground truth, and the corresponding class labels along with the number of samples for each class.**
 
 
 
@@ -161,7 +161,7 @@ $$
 
 - **Salinas**
 
-**The Salinas dataset was collected by the AVIRIS sensor over the Salinas Valley in California, USA. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and consists of 512 × 217 pixels with a spatial resolution of approximately 3.7 m. A total of 204 spectral bands covering the range of 400–2500 nm are used, divided into 16 land-cover classes. Figure 5 shows the original image, the ground truth map, and the corresponding 16 class labels along with the pixel count for each category.**
+**The Salinas dataset was collected by the AVIRIS sensor over the Salinas Valley in California, USA. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes and consists of 512 × 217 pixels with a spatial resolution of approximately 3.7 m. A total of 204 spectral bands covering the range of 400–2500 nm are used, divided into 16 land-cover classes. Figure 5 shows the pseudo-color image, the ground truth, and the corresponding class labels along with the number of samples for each class.**
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/SA_compressed.png" alt="替代文本" title="图片标题" width=500>
 
@@ -171,7 +171,7 @@ $$
 
 - **Botswana**
 
-**The Botswana dataset was acquired by NASA's EO-1 satellite over the Okavango Delta in Botswana. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes. The image size is 1476 × 256 pixels, with a spatial resolution of approximately 20 m. Out of the original 242 spectral bands (400–2500 nm), 145 bands are used after removing noisy ones (specifically bands 1–9, 56–81, 98–101, 120–133, and 165–186). Figure 6 presents the original image, the ground truth map, and the corresponding 14 land-cover class labels along with the pixel count for each category.**
+**The Botswana dataset was acquired by NASA's EO-1 satellite over the Okavango Delta in Botswana. It is publicly available at https://www.ehu.eus/ccwintco/index.php?title=Hyperspectral_Remote_Sensing_Scenes. The image size is 1476 × 256 pixels, with a spatial resolution of approximately 20 m. Out of the original 242 spectral bands (400–2500 nm), 145 bands are used after removing noisy ones (specifically bands 1–9, 56–81, 98–101, 120–133, and 165–186). Figure 6 shows the pseudo-color image, the ground truth, and the corresponding class labels along with the number of samples for each class.**
 
 
 
@@ -263,6 +263,7 @@ $$
 
 
  
+
 
 
 
