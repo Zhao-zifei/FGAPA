@@ -104,7 +104,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/FGAPA_compressed.png" alt="替代文本" title="图片标题">
 <center><p>Fig2: Overall framework of FGAPA</p></center>
 
-**Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
+**Support features and query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of query features by computing the Euclidean distance between them and the prototypes formed by the support features of each class.**
 
 **The FSL task is conducted simultaneously on both the source and target domains. Its loss function $L_{\text{fsl}}$ consists of two components, $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the "correlation calculation" described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
@@ -263,6 +263,7 @@ $$
 
 
  
+
 
 
 
