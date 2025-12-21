@@ -191,7 +191,6 @@ $$
 OA = \frac{\sum_{i=1}^{c} TP_i}{N}
 $$
 
-OA = (sum_{i=1}^{c} TP_i) / N
 
 ​        **where $TP_i$ denotes the number of correctly classified samples for the i-th class, N is the total number of samples, and c represents the total number of classes.**
 
@@ -266,6 +265,7 @@ $$
 
 
  
+
 
 
 
