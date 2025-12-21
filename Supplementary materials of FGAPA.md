@@ -200,7 +200,7 @@ $$
 
 ​         **where $TP_i$ denotes the number of correctly classified samples for the i-th class, $N_i$ represents the total number of samples in the i-th class, and c is the total number of classes.**
 
--   **Kappa: **
+-   **Kappa:**
 
 $$
 \kappa = \frac{P_o - P_e}{1 - P_e}
@@ -260,5 +260,6 @@ $$
 ## **The ending**
 
 **We sincerely appreciate the reviewers' positive assessment of the novelty of this work and their recognition of the potential and practical value of the proposed cross-domain hyperspectral image classification method within the overall research framework and methodological motivation. We fully acknowledge the main concerns raised by the reviewers and have provided comprehensive responses regarding the robustness of FGAPA to new source and target domains, the readability of its fundamental concepts, the setting of experimental hyperparameters, methodological details, and the statistical significance of the experimental results. We hope that this supplementary material addresses the reviewers' concerns. Once again, we thank the reviewers for their valuable suggestions, which have helped us identify key areas for improvement in the manuscript. We believe that incorporating this feedback will significantly enhance the quality and clarity of the paper.**
+
 
  
