@@ -214,7 +214,7 @@ $P_e$ denotes the theoretical probability of agreement between the model and a r
 
 9.As stated in the global comment, the results are missing statistical significance tests to make sure your method is statistically better on these datasets.
 
-**Due to space constraints, some important content in the main text could not be fully elaborated. To address this, we have supplemented the performance results of FGAPA on the three target domains—Indian Pines, Salinas, and Botswana—with Chikusei as the source domain, including standard deviations to demonstrate statistical significance. Tables 2 to 4 present the performance statistics of FGAPA under 1–5 shot settings on the three target domains, respectively. All experiments were independently run 10 times, and the results are reported as averages.**
+**Due to space constraints, some important content in the main text could not be fully elaborated. To address this, we have supplemented the performance results of FGAPA on the three target domains—Indian Pines, Salinas, and Botswana—with Chikusei as the source domain, including standard deviations to demonstrate statistical significance. Tables 2-4 present the performance statistics of FGAPA under 1–5 shot settings on the three target domains, respectively. All experiments were independently run 10 times, and the results are reported as averages.**
 
 <center><p>Table 2: Classification results (mean ± standard deviation) on Indian Pines using 1–5 labeled samples per class</p></center>
 
@@ -267,6 +267,7 @@ $$
 
 
  
+
 
 
 
