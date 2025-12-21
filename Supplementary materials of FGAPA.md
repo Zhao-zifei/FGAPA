@@ -10,7 +10,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **To verify the robustness of our method across different source domains, we additionally selected Hanchuan as a source domain for experimentation. This dataset also contains a rich variety of land-cover classes (16 classes) and exhibits a significant domain shift from the target domains. Table 1 presents the classification performance of our method on the Indian Pines, Salinas, and Botswana target domains when using Hanchuan as the source domain and only five labeled samples, in comparison with mainstream domain adaptation methods including DCFSL, MLPA, and the contrastive learning-based CTF-SSCL.**
 
-<center><p>Table 1:Classification Results (Mean ± Std) with Hanchuan dataset as Source Domain</p></center>
+<center><p>Table 1:Classification results (mean ± std) with Hanchuan dataset as source domain</p></center>
 
 <table style="font-size: 0.6em;">
     <tr>
@@ -95,7 +95,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/FSL_compressed.png" alt="替代文本" title="图片标题">
 
-<center><p>Fig1：Few Shot Learning</p></center>
+<center><p>Fig1：Few shot learning</p></center>
 
 **In cross-domain few-shot learning, the source domain is a dataset rich in data and thoroughly labeled, where the model is first pre-trained to learn general features and patterns (i.e., to enable the model to learn how to learn). The target domain, on the other hand, is a new dataset for the actual downstream task but with extremely limited labeled samples, and its data distribution and classes are typically different from those of the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain, using only a minimal number of samples in the target domain (such as 1–5 labeled samples per class), to rapidly adapt to and address the new tasks in the target domain.**
 
@@ -103,7 +103,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 ![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/overall%20framework%20of%20FGAPA_compressed.png)
 
-<center><p>Fig2: Overall Framework of FGAPA</p></center>
+<center><p>Fig2: Overall framework of FGAPA</p></center>
 
 **Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
 
@@ -251,7 +251,7 @@ $$
 
 <img src="https://gitee.com/abcd123123410513/images/raw/master/imgs/Revised%20version%20of%20Figure%203%20in%20FGAPA_compressed%20(1).png" alt="替代文本" title="图片标题" width=1200>
 
-<center><p>Figure 7: Revised version of Figure 3 in FGAPA</p></center>
+<center><p>Figure 7: Revised version of figure 3 in FGAPA</p></center>
 
 12.I am not an expert in hyperspectral image processing, and it is difficult to understand the task from the text. It would be highly beneficial to add a paragraph that clearly presents the task. For example, what does Figure 2 represent? The bibliography is also somewhat limited.
 
@@ -263,4 +263,5 @@ $$
 
 
  
+
 
