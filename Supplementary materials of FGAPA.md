@@ -10,8 +10,6 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **To further validate the robustness of our method across different source domains, we additionally conduct experiments using the Hanchuan dataset as the source domain. This dataset also contains a rich variety of land-cover classes (16 classes) and exhibits a substantial domain shift from the target domains. Table 1 reports the classification performance of our method on the Indian Pines, Salinas, and Botswana target domains using Hanchuan as the source domain with only five labeled samples per class, in comparison with representative domain adaptation methods, including DCFSL, MLPA, and the contrastive learning-based CTF-SSCL.**
 
-**As shown in Table 1, when Hanchuan is used as the source domain, FGAPA achieves superior OA, AA, and Kappa across all three target datasets. In terms of OA, FGAPA outperforms DCFSL and MLPA by 6.84% and 8.5% on Indian Pines, respectively, with similar gains observed on Salinas and Botswana. Compared with the contrastive learning-based CTF-SSCL, our method benefits from the adversarial domain alignment strategy in the ACA module, resulting in stronger performance, while lower variance further confirms its superior stability. Overall, FGAPA demonstrates consistent robustness and reliability across different source domains, including Chikusei and Hanchuan.**
-
 <center><p>Table 1:Classification results (mean ± std) with Hanchuan dataset as source domain</p></center>
 
 <table style="font-size: 0.6em;">
@@ -83,7 +81,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 </table>
 
 
-**As shown in Table 1, when using Hanchuan as the source domain, FGAPA achieves significantly higher OA, AA, and Kappa values across all three datasets compared to all benchmark methods. Taking OA as an example, FGAPA outperforms DCFSL and MLPA by 6.84% and 8.5%, respectively, on Indian Pines, with similar advantages observed on Salinas and Botswana. Compared to the contrastive learning-based CTF-SSCL, our method demonstrates stronger performance through the adversarial domain alignment strategy of the ACA module, while lower variance further confirms its superior stability. In summary, FGAPA exhibits consistent robustness and reliability across different source domains, namely Chikusei and Hanchuan.**
+**As shown in Table 1, when Hanchuan is used as the source domain, FGAPA achieves superior OA, AA, and Kappa across all three target datasets. In terms of OA, FGAPA outperforms DCFSL and MLPA by 6.84% and 8.5% on Indian Pines, respectively, with similar gains observed on Salinas and Botswana. Compared with the contrastive learning-based CTF-SSCL, our method benefits from the adversarial domain alignment strategy in the ACA module, resulting in stronger performance, while lower variance further confirms its superior stability. Overall, FGAPA demonstrates consistent robustness and reliability across different source domains, including Chikusei and Hanchuan.**
 
 
 
@@ -265,6 +263,7 @@ $$
 
 
  
+
 
 
 
