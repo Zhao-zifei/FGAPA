@@ -107,7 +107,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **Support features and Query features are the feature representations extracted from the support set and the query set, respectively. As shown in Figure 2, the proposed method determines the category of Query features by computing the Euclidean distance between them and the prototypes formed by the Support features of each class.**
 
-**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $\mathcal{L}_{fsl}$ consists of two components, $$\mathcal{L}_{fsl}^t$$ and $$\mathcal{L}_{fsl}^s$$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
+**The FSL task is conducted simultaneously on both the source and target domains. Its loss function $\mathcal{L}_{fsl}$ consists of two components, $\mathcal{L}_{fsl}^t$ and $\mathcal{L}_{fsl}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the correlation calculation described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
 3.Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
 
@@ -263,6 +263,7 @@ $$
 
 
  
+
 
 
 
