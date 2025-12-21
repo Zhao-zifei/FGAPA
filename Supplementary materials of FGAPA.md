@@ -6,7 +6,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 1.The experiments provide good initial evidence for the method, but need to go further in order to fully establish the value of the approach. The training and transfer hinges on the selection of the source domain, so only one experiment here is very limiting. The source domain needs some properties of potential alignment with the target domains, and must somehow be sufficiently rich to cover the possibilities. So it isn't clear how robust the method is in general, or how to pick the source domain to begin with, or how the approach can be updated as new domains are sampled.
 
-**To ensure the effectiveness of the proposed method, the source domain is generally required to cover no fewer classes than the target domain, so as to construct a sufficiently representative metric space for downstream tasks. The Chikusei dataset contains 19 diverse land-cover classes, providing rich prior knowledge for cross-domain few-shot learning. In addition, a significant domain shift exists between Chikusei and the target domains, making it well suited for evaluating the generalization capability of few-shot learning methods under challenging conditions. Therefore, Chikusei is selected as the source domain in this study. **
+**To ensure the effectiveness of the proposed method, the source domain is generally required to cover no fewer classes than the target domain, so as to construct a sufficiently representative metric space for downstream tasks. The Chikusei dataset contains 19 diverse land-cover classes, providing rich prior knowledge for cross-domain few-shot learning. In addition, a significant domain shift exists between Chikusei and the target domains, making it well suited for evaluating the generalization capability of few-shot learning methods under challenging conditions. Therefore, Chikusei is selected as the source domain in this study.**
 
 **To further validate the robustness of our method across different source domains, we additionally conduct experiments using the Hanchuan dataset as the source domain. This dataset also contains a rich variety of land-cover classes (16 classes) and exhibits a substantial domain shift from the target domains. Table 1 reports the classification performance of our method on the Indian Pines, Salinas, and Botswana target domains using Hanchuan as the source domain with only five labeled samples per class, in comparison with representative domain adaptation methods, including DCFSL, MLPA, and the contrastive learning-based CTF-SSCL.**
 
@@ -265,6 +265,7 @@ $$
 
 
  
+
 
 
 
