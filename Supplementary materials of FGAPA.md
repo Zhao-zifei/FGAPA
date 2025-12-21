@@ -4,7 +4,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 ## **Response to Reviewer 1**
 
-1.The experiments provide good initial evidence for the method, but need to go further in order to fully establish the value of the approach. The training and transfer hinges on the selection of the source domain, so only one experiment here is very limiting. The source domain needs some properties of potential alignment with the target domains, and must somehow be sufficiently rich to cover the possibilities. So it isn't clear how robust the method is in general, or how to pick the source domain to begin with, or how the approach can be updated as new domains are sampled.
+1. The experiments provide good initial evidence for the method, but need to go further in order to fully establish the value of the approach. The training and transfer hinges on the selection of the source domain, so only one experiment here is very limiting. The source domain needs some properties of potential alignment with the target domains, and must somehow be sufficiently rich to cover the possibilities. So it isn't clear how robust the method is in general, or how to pick the source domain to begin with, or how the approach can be updated as new domains are sampled.
 
 **To ensure the effectiveness of the proposed method, the source domain is generally required to cover no fewer classes than the target domain, so as to construct a sufficiently representative metric space for downstream tasks. The Chikusei dataset contains 19 diverse land-cover classes, providing rich prior knowledge for cross-domain few-shot learning. In addition, a significant domain shift exists between Chikusei and the target domains, making it well suited for evaluating the generalization capability of few-shot learning methods under challenging conditions. Therefore, Chikusei is selected as the source domain in this study.**
 
@@ -87,7 +87,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 ## **Response to Reviewer 2**
 
-1.Some definitions are missing in the paragraph about FSL in HSIC. What is FSL? What are source and target domains?
+1. Some definitions are missing in the paragraph about FSL in HSIC. What is FSL? What are source and target domains?
 
 **Few Shot Learning (FSL) is fundamentally a meta-learning method that can acquire transferable knowledge from different tasks, enabling rapid adaptation to new tasks. It typically follows an N-way K-shot learning setting, where K labeled samples per class are used to train an N-class classifier. As shown in Figure 1, an FSL task consists of a labeled support set and a query set to be predicted. FSL classifies samples by computing the distance between each query feature and the support features of each class, thereby enabling the model to learn how to infer the categories of query samples based on the given support set. In hyperspectral image classification (HSIC), the same framework can be applied: a small number of labeled samples are selected as the support set, while a large number of unlabeled samples serve as the query set, constructing an FSL task for model learning**.
 
@@ -99,7 +99,7 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **In cross-domain FSL, the source domain refers to a dataset with abundant, fully labeled samples, where the model is initially pre-trained to learn general features and patterns (i.e., to “learn how to learn”). The target domain is the dataset for the downstream task, typically with very few labeled samples and a data distribution and set of classes different from the source domain. The core objective of the entire process is to leverage the prior knowledge acquired from the source domain to quickly adapt to new tasks in the target domain using only a minimal number of labeled samples (e.g., 1–5 per class).**
 
-2.Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
+2. Figure 1 is not clear. Acronyms are not defined and do not correspond to the text. What are support features? Why don't we see $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$? What is the attention score (never mentioned in the text)? Does the prototype bank correspond to $\mathbf p_i$?
 
 ![image-20251216203011245](https://gitee.com/abcd123123410513/images/raw/master/imgs/overall%20framework%20of%20FGAPA_compressed.png)
 
@@ -109,19 +109,19 @@ We sincerely thank the two reviewers for their thorough evaluation of our manusc
 
 **The FSL task is conducted simultaneously on both the source and target domains. Its loss function $L_{\text{fsl}}$ consists of two components, $L_{\text{fsl}}^t$ and $L_{\text{fsl}}^s$, which are collectively referred to as $\mathcal{L}_{fsl}$ in the text. In the original Figure 2, the term "attention score" corresponds to the "correlation calculation" described in the paper, and $p_i$ denotes the prototype of the $i$-th class in the prototype bank. Figure 2 has been updated accordingly to provide a clearer illustration of the overall workflow of FGAPA.**
 
-3.Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
+3. Equation (5) and (6): what is the dimensionality of the weights and biases in the MLP?
 
 **In FGAPA, the feature extractor outputs features of dimension 128×1. As specified in Equations (5) and (6), the MLP layers are configured as follows: the first layer has weights of size (128, 64) and biases of size 64, and the second layer has weights of size (64, 128) and biases of size 128.**
 
-4.Why do you need to transform the features and prototypes with MLP?
+4. Why do you need to transform the features and prototypes with MLP?
 
 **Since features and prototypes originate from different semantic levels, the MLP layer maps them into a comparable feature space. Meanwhile, the ReLU activation function within MLP further helps  the model to learn more complex nonlinear relationships, thereby enhancing its expressive capability. Therefore, transforming both features and prototypes through the MLP allows for more effective correlation computation in the feature space and facilitates the learning of richer, more expressive representations.**
 
-5.Why is it a cosine similarity (normalized dot product) in equation (7) and not in equation (10) ?
+5. Why is it a cosine similarity (normalized dot product) in equation (7) and not in equation (10) ?
 
 **Both Equation (7) and Equation (10) employ cosine similarity for correlation computation. This approach is naturally aligned with prototype learning, better suited for high-dimensional embedding spaces, and maintains optimization stability. Moreover, the temperature coefficient adjusts the sharpness of the softmax distribution, further enhancing training stability. To clarify the methodological details, Equation (10) will be revised accordingly to avoid potential ambiguity.**
 
-6.What is the total optimization objective of the model in the end? It never appears.
+6. What is the total optimization objective of the model in the end? It never appears.
 
 **The overall loss function of our method consists of three components: the few-shot learning loss $L_{\text{fsl}}$, the intra-domain alignment loss $L_{\text{in}}$, and the cross-domain alignment loss $L_{\text{cross}}$. It is defined as follows:**
 
@@ -131,7 +131,7 @@ $$
 
 **Here, $\lambda_1$ and $\lambda_2$ are weighting hyperparameters for $L_{\text{in}}$ and $L_{\text{cross}}$, respectively. Their values are tuned within the range [0, 1] with a step size of 0.1. After optimization, the best-performing values are set as $\lambda_1 = 0.5$ and $\lambda_2 = 0.3$.**
 
-7.You talk about 4 datasets. Where do they come from? Is it public data? Is it published? How do you remove noisy bands?
+7. You talk about 4 datasets. Where do they come from? Is it public data? Is it published? How do you remove noisy bands?
 
 **This study conducts experiments on four publicly available hyperspectral datasets. Specifically, Chikusei is used as the source domain, while Indian Pines, Salinas, and Botswana serve as the target domains. The detailed information, data sources, and noise removal procedures for each dataset are as follows:**
 
@@ -181,7 +181,7 @@ $$
 
 
 
-8.In the experimental protocol, you have to detail the metrics more in detail. What do they measure? How are they calculated? Why are they relevant for the task?
+8. In the experimental protocol, you have to detail the metrics more in detail. What do they measure? How are they calculated? Why are they relevant for the task?
 
 **Three commonly used metrics for evaluating classification performance are employed in this study: Overall Accuracy (OA), Average Accuracy (AA), and the Kappa coefficient. OA measures the overall classification correctness, AA calculates the average accuracy across all classes to avoid dominance by classes with a large number of samples, and Kappa provides a more reliable assessment of agreement between the classification results and ground truth by correcting for random consistency. The definitions of these metrics are as follows:**
 
@@ -212,7 +212,7 @@ $$
 **$P_o$ represents the probability that the model and a random classifier assign the same class labels.  
 $P_e$ denotes the theoretical probability of agreement between the model and a random classifier, calculated based on their respective marginal distributions.**
 
-9.As stated in the global comment, the results are missing statistical significance tests to make sure your method is statistically better on these datasets.
+9. As stated in the global comment, the results are missing statistical significance tests to make sure your method is statistically better on these datasets.
 
 **Due to space constraints, some important content in the main text could not be fully elaborated. To address this, we have supplemented the performance results of FGAPA on the three target domains—Indian Pines, Salinas, and Botswana—with Chikusei as the source domain, including standard deviations to demonstrate statistical significance. Tables 2-4 present the performance statistics of FGAPA under 1–5 shot settings on the three target domains, respectively. All experiments were independently run 10 times, and the results are reported as averages.**
 
@@ -230,7 +230,7 @@ $P_e$ denotes the theoretical probability of agreement between the model and a r
 
 As shown in Tables 2-4, under the 1–5 shot settings, FGAPA consistently outperforms all comparative methods across the three datasets: Indian Pines, Salinas, and Botswana. Specifically, under the 5-shot condition, the collaborative work of its ACA and FFA modules extracts discriminative features while reducing inter-domain differences, leading to outstanding performance—surpassing the second-best method by 2.69%, 3.07%, and 1.32% on the three datasets, respectively. Under the 1-shot condition, the discriminative features captured by the FFA module better characterize class distributions and enhance generalization, achieving advantages of 5.72%, 2.7%, and 3.74%, respectively. Moreover, FGAPA generally exhibits lower standard deviations than other methods across all experimental scenarios, indicating strong stability under varying sample conditions. Overall, these results fully demonstrate the statistically significant superiority of FGAPA.
 
-10.There are temperature parameters in equations (7) and (10). How do you tune these? This information is lacking. Same for hyperparameters in the losses: how are the weights selected? On which data? What impact on the performance of the model? What is the batch size used? (This is necessary for reproducibility.)
+10. There are temperature parameters in equations (7) and (10). How do you tune these? This information is lacking. Same for hyperparameters in the losses: how are the weights selected? On which data? What impact on the performance of the model? What is the batch size used? (This is necessary for reproducibility.)
 
 **In this experiment, the hyperparameters include the temperature parameter τ in Equations (7) and (10), the weighting coefficients λ₁ and λ₂ in the total loss, and the batch size used during model training. The specific settings for these parameters are described below.**
 
@@ -242,11 +242,11 @@ $$
 Loss = L_{\text{fsl}} + \lambda_1 L_{\text{in}} + \lambda_2 L_{\text{cross}}
 $$
 
-**$λ_1$ and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
+**where $λ_1$ and $λ_2$ represent the weighted hyperparameters for  $L_{\text{in}}$ and $L_{\text{cross}}$. Their values range from 0 to 1 with increments of 0.1. They were tuned using the OA, AA, and Kappa metrics on three datasets, and the optimal parameters obtained were $λ_1$ = 0.5 and $λ_2$ = 0.3.**
 
 - **Furthermore, we set the batch size in FGAPA to 64, which determines the number of samples used in each parameter update during training. Throughout the training process, the data are divided into multiple batches, each containing 64 samples. This configuration not only improves training efficiency but also helps suppress noise and enhances the stability of model training.**
 
-11.The last paragraph of the introduction does not contain the appropriate acronym (FFE instead of FFA). 
+11. The last paragraph of the introduction does not contain the appropriate acronym (FFE instead of FFA). 
 
 ​      Figure 3 is too small. 
 
@@ -256,7 +256,7 @@ $$
 
 <center><p>Figure 7: Revised version of figure 3 in FGAPA</p></center>
 
-12.I am not an expert in hyperspectral image processing, and it is difficult to understand the task from the text. It would be highly beneficial to add a paragraph that clearly presents the task. For example, what does Figure 2 represent? The bibliography is also somewhat limited.
+12. I am not an expert in hyperspectral image processing, and it is difficult to understand the task from the text. It would be highly beneficial to add a paragraph that clearly presents the task. For example, what does Figure 2 represent? The bibliography is also somewhat limited.
 
 **We sincerely thank the reviewer for the valuable suggestions. In the revised manuscript, we will provide clearer explanations of the notations and core concepts to improve readability. Additionally, we will include relevant references to better reflect the current research landscape.**
 
@@ -266,6 +266,7 @@ $$
 
 
  
+
 
 
 
