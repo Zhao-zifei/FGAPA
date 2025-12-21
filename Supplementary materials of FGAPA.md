@@ -243,9 +243,7 @@ $$
 
 - **Furthermore, we set the batch size in FGAPA to 64, which determines the number of samples used in each parameter update during training. Throughout the training process, the data are divided into multiple batches, each containing 64 samples. This configuration not only improves training efficiency but also helps suppress noise and enhances the stability of model training.**
 
-11.The last paragraph of the introduction does not contain the appropriate acronym (FFE instead of FFA). 
-
-​      Figure 3 is too small. 
+11.The last paragraph of the introduction does not contain the appropriate acronym (FFE instead of FFA). Figure 3 is too small. 
 
 **Following the suggestions, we have corrected all instances of FFE to FFA in the text. Furthermore, Figure 3 has been enlarged to enable readers to more clearly observe the performance differences among the methods.**
 
@@ -263,6 +261,7 @@ $$
 
 
  
+
 
 
 
